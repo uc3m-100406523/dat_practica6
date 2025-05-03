@@ -187,7 +187,7 @@ public class DBInteraction {
 	// This method conforms a SQL sentence for listing the activities in which a specific client is registered
 
 	public ArrayList listactusr(String login) throws Exception{
-		String selection="SELECT ID, NAME, DESCRIPTION, START_DATE, COST, PAVILLION_NAME, TOTAL_PLACES, OCCUPIED_PLACES FROM REGISTRATIONS, ACTIVITIES, PAVILLIONS WHERE REGISTRATIONS.CLIENT_LOGIN='"+login+"' AND REGISTRATIONS.ACTIVITY_ID = ACTIVITIES.ID AND ACTIVITIES.PAVILLION_NAME = PAVILLIONS.PAVILLION";
+		String selection="SELECT ID, NAME, DESCRIPTION, START_DATE, COST, PAVILLION_NAME, TOTAL_PLACES, OCCUPIED_PLACES FROM SUBSCRIPTIONS, ACTIVITIES, PAVILLIONS WHERE SUBSCRIPTIONS.CLIENT_LOGIN='"+login+"' AND SUBSCRIPTIONS.ACTIVITY_ID = ACTIVITIES.ID AND ACTIVITIES.PAVILLION_NAME = PAVILLIONS.PAVILLION";
 		ArrayList data = this.listactivities(selection);
 		return (data);
    	}
@@ -211,14 +211,14 @@ public class DBInteraction {
 	//This method registers a client for a specific activity
 
     public void regactivity(String login, String id) throws Exception{
-		String regactivity="INSERT INTO REGISTRATIONS VALUES ('"+login+"','"+id+"')";
+		String regactivity="INSERT INTO SUBSCRIPTIONS VALUES ('"+login+"','"+id+"')";
 		q.doUpdate(regactivity);
 	}
 
 	//This method unregisters a client from a specific activity
 
 	public void unregactivity(String login, String id) throws Exception{
-		String unregactivity="DELETE FROM REGISTRATIONS WHERE REGISTRATIONS.CLIENT_LOGIN='"+login+"'AND REGISTRATIONS.ACTIVITY_ID="+id;
+		String unregactivity="DELETE FROM SUBSCRIPTIONS WHERE SUBSCRIPTIONS.CLIENT_LOGIN='"+login+"'AND SUBSCRIPTIONS.ACTIVITY_ID="+id;
 		q.doUpdate(unregactivity);
 	}
 }

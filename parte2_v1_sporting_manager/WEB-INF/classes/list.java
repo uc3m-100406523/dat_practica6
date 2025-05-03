@@ -32,7 +32,7 @@ public class list extends HttpServlet {
             out.println(e.getMessage());
         }
         try{
-            con = DriverManager.getConnection (url, "root", "root");
+            con = DriverManager.getConnection (url, "root", "datuc3m");
             stmt = con.createStatement();
 	        type=req.getParameter("type");
 	        text=req.getParameter("text1");
