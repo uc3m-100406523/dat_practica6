@@ -1,0 +1,2 @@
+Cada directorio contiene el sistema de ficheros de cada uno de los ejemplos que hemos puesto en marcha en la parte 1 de la práctica.
+Para cada ejemplo, copia el sistema de ficheros que hay bajo el directorio principal en el directorio *webapps* de *Apache Tomcat* y compila con javac el fichero *.java* que contienen.
