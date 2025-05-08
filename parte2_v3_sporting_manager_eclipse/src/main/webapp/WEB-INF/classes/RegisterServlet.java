@@ -16,9 +16,7 @@ public class RegisterServlet extends HttpServlet {
 
         HttpSession session = request.getSession();
 
-        // Cookie cookie = new Cookie("cliente", cliente.getlogin());
-        // response.addCookie(cookie);
-
+        /* Se crea el cliente y se guarda */
         String login = request.getParameter("cliente_login");
         String passwd = request.getParameter("cliente_pwd");
         String name = request.getParameter("cliente_name");
@@ -36,6 +34,15 @@ public class RegisterServlet extends HttpServlet {
         session.setAttribute("cliente_surname", surname);
         session.setAttribute("cliente_address", address);
         session.setAttribute("cliente_phone", phone);
+
+        /* Cookie */
+        String sessionID = session.getId();
+        int lifetime = 3600;
+        Cookie sessionCookie = new Cookie("JSESSIONID", sessionID);
+        sessionCookie.setMaxAge(lifetime);
+        sessionCookie.setHttpOnly(true);
+        sessionCookie.setSecure(true);
+        response.addCookie(sessionCookie);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("/confirm.jsp");
         dispatcher.forward(request, response);

@@ -14,19 +14,16 @@ public class RegisterServlet extends HttpServlet {
     
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        // TODO: Crear cookie
-        // Cookie cookie = new Cookie("cliente", cliente.getlogin());
-        // response.addCookie(cookie);
+        HttpSession session = request.getSession();
 
+        /* Se crea el cliente y se guarda */
         String login = request.getParameter("cliente_login");
         String passwd = request.getParameter("cliente_pwd");
         String name = request.getParameter("cliente_name");
         String surname = request.getParameter("cliente_surname");
         String address = request.getParameter("cliente_address");
         String phone = request.getParameter("cliente_phone");
-
         Client cliente = new Client(login, passwd, name, surname, address, phone);
-        HttpSession session = request.getSession();
 
         /* El cliente se guarda en la sesión */
         session.setAttribute("cliente", cliente);
@@ -37,6 +34,15 @@ public class RegisterServlet extends HttpServlet {
         session.setAttribute("cliente_surname", surname);
         session.setAttribute("cliente_address", address);
         session.setAttribute("cliente_phone", phone);
+
+        /* Cookie */
+        String sessionID = session.getId();
+        int lifetime = 3600;
+        Cookie sessionCookie = new Cookie("JSESSIONID", sessionID);
+        sessionCookie.setMaxAge(lifetime);
+        sessionCookie.setHttpOnly(true);
+        sessionCookie.setSecure(true);
+        response.addCookie(sessionCookie);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("/confirm.jsp");
         dispatcher.forward(request, response);
