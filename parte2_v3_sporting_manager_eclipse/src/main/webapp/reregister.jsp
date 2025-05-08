@@ -3,7 +3,7 @@
 <head><title>Registro de Usuario</title></head>
 <body>
 <h2>Formulario de Registro</h2>
-<form action="RegisterServlet" method="post">
+<form action="register" method="post">
   <label for="cliente_name">Nombre:</label>
   <input type="text" id="cliente_name" name="cliente_name" value="<%= session.getAttribute("cliente_name") %>"><br>
 

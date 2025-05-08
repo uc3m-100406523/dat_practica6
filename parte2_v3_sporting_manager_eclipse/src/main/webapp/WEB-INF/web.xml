@@ -23,7 +23,7 @@ Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
 
   <servlet-mapping>
     <servlet-name>RegisterServlet</servlet-name>
-    <url-pattern>/RegisterServlet</url-pattern>
+    <url-pattern>/register</url-pattern>
   </servlet-mapping>
 
   <servlet>

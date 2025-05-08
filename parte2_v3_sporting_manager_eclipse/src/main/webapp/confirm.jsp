@@ -12,10 +12,10 @@
   <li>Nombre de usuario: <%= session.getAttribute("cliente_login") %></li>
 </ul>
 <form action="GuardarCliente" method="post">
-  <button type="submit" value="Afirmativo">
+  <button type="submit" id="boton_afirmativo" name="is_confirmed" value="True">Afirmativo</button>
 </form>
-<form action="reregister.jsp" method="post">
-  <button type="submit" value="Negativo">
+<form action="GuardarCliente" method="post">
+  <button type="submit" id="boton_negativo" name="is_confirmed" value="False">Negativo</button>
 </form>
 </body>
 </html>

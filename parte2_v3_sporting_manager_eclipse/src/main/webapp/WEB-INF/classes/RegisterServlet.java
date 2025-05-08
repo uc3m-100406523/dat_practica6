@@ -7,13 +7,17 @@ import activities.db.*;
 
 public class RegisterServlet extends HttpServlet {
     public void doGet(HttpServletRequest req, HttpServletResponse res)throws IOException, ServletException{
-        res.setContentType("text/html");
-        PrintWriter out = res.getWriter();
-        out.println("GET Request. No Form Data Posted");
+        /* JSP de registro */
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/register.jsp");
+        dispatcher.forward(req, res);
     }
     
-    public void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        // TODO: Crear cookie
+        // Cookie cookie = new Cookie("cliente", cliente.getlogin());
+        // response.addCookie(cookie);
+
         String login = request.getParameter("cliente_login");
         String passwd = request.getParameter("cliente_pwd");
         String name = request.getParameter("cliente_name");
@@ -23,7 +27,11 @@ public class RegisterServlet extends HttpServlet {
 
         Client cliente = new Client(login, passwd, name, surname, address, phone);
         HttpSession session = request.getSession();
+
+        /* El cliente se guarda en la sesión */
         session.setAttribute("cliente", cliente);
+
+        /* Se guardan el resto de valores */
         session.setAttribute("cliente_login", login);
         session.setAttribute("cliente_name", name);
         session.setAttribute("cliente_surname", surname);
