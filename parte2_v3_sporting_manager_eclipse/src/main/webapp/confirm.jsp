@@ -10,13 +10,12 @@
   <li>Dirección: <%= session.getAttribute("cliente_address") %></li>
   <li>Teléfono: <%= session.getAttribute("cliente_phone") %></li>
   <li>Nombre de usuario: <%= session.getAttribute("cliente_login") %></li>
-  <li>Contraseña: <%= session.getAttribute("cliente_pwd") %></li>
 </ul>
-<form action="guardarCliente" method="post">
-  <button type="submit" value="Sí, son correctos">
+<form action="GuardarCliente" method="post">
+  <button type="submit" value="Afirmativo">
 </form>
 <form action="reregister.jsp" method="post">
-  <button type="submit" value="No, deseo cambiarlos">
+  <button type="submit" value="Negativo">
 </form>
 </body>
 </html>

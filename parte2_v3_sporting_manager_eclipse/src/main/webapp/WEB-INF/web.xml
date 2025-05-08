@@ -5,18 +5,38 @@ Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
 
 <web-app>
   <display-name>Sporting activities searching</display-name>
-   <servlet>
+
+  <servlet>
     <servlet-name>list</servlet-name>
-     <servlet-class>
-        list
-    </servlet-class>
+    <servlet-class>list</servlet-class>
   </servlet>
+
   <servlet-mapping>
-<servlet-name>list </servlet-name>
-<url-pattern>/list </url-pattern>
-</servlet-mapping>
+    <servlet-name>list </servlet-name>
+    <url-pattern>/list </url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>RegisterServlet</servlet-name>
+    <servlet-class>RegisterServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>RegisterServlet</servlet-name>
+    <url-pattern>/RegisterServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>GuardarCliente</servlet-name>
+    <servlet-class>GuardarCliente</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>GuardarCliente</servlet-name>
+    <url-pattern>/GuardarCliente</url-pattern>
+  </servlet-mapping>
 
   <welcome-file-list id="WelcomeFileList">
-    <welcome-file>index.html</welcome-file>
-    </welcome-file-list>
+  <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
 </web-app>
