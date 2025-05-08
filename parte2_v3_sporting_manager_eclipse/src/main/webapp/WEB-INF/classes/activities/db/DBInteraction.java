@@ -192,6 +192,13 @@ public class DBInteraction {
 		return (data);
    	}
 
+	// Method to retrieve activities between two dates
+    public ArrayList listactbydates(String startDate, String endDate) throws Exception {
+        String selection = "SELECT * FROM ACTIVITIES WHERE START_DATE BETWEEN '" + startDate + "' AND '" + endDate + "'";
+        ArrayList data = this.listactivities(selection);
+        return data;
+    }
+
 	//This method requests the execution of a SQL sentence for listing all the pavillions
 	//and it retrieves all the information for each pavillion, storing each pavillion as an element
 	//of an array. Each element contains an object of the type pavillion

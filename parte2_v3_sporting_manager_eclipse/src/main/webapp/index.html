@@ -10,15 +10,17 @@ de Madrid in its three campus (Getafe, Leganes and Colmenarejo) <p>
 Please select an option <br>
 <form action="list" method=POST>
 <select name="type">
-<option value="all_activities" SELECTED> List all sporting activities 
+<option value="all_activities" SELECTED> List all sporting activities
 <option value="all_pavillions" SELECTED> List all pavillions
-<option value="free_places" SELECTED> List activities for which there are currently free places 
-<option value="cost" SELECTED> List activities for which there are free places costing less than a certain amount 
-<option value="name" SELECTED> List activities by name
+<option value="free_places" SELECTED> List activities for which there are currently free places
+<option value="cost" SELECTED> List activities for which there are free places costing less than a certain amount ([cost])
+<option value="pavillion" SELECTED> List activities for which there are free places taking place in a certain pavillion ([pavillion])
+<option value="name" SELECTED> List activities by name ([name])
+<option value="date" SELECTED> List activities for which there are free places taking place between two dates ([start date],[end date])
 <option value="all_activities" SELECTED> List all sporting activities
 </select>
 <p>
-Introduce the cost of the activity or the pavillion name depending on your selection:
+Filter by the cost of the activity, the pavillion name, the activity name or date:
 <input type="text" name="text1" size=32><br>
 <p>
 

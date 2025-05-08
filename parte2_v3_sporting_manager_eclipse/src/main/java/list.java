@@ -38,12 +38,23 @@ public class list extends HttpServlet {
 			float price=Float.parseFloat(text);
 			data=db.listactprice(price);
 		}
+		else if (type.equals("pavillion")){
+			data=db.listactpav(text);
+		}
 		else if (type.equals("name")){
 			data=db.listactname(text);
 		}
+		else if (type.equals("date")){
+			String[] dates = text.split(",");
+			String startDate = dates[0];
+			String endDate = dates[1];
+			data=db.listactbydates(startDate, endDate);
+		}
+		/*
 		else{
 			data=db.listactpav(text);
 		}
+		/**/
 
         //Depending on if we list pavillions or activities, the rendering will be different
 		if (type.equals("all_pavillions")){
