@@ -1,0 +1,1 @@
+package activities.model; public class Cliente { public String login, passwd, name, surname, address, phone; }

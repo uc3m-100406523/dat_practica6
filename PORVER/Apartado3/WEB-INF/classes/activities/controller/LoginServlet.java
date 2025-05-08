@@ -1,0 +1,1 @@
+package activities.controller; public class LoginServlet extends javax.servlet.http.HttpServlet {}

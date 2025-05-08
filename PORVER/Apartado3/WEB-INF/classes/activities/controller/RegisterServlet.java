@@ -1,0 +1,1 @@
+package activities.controller; public class RegisterServlet extends javax.servlet.http.HttpServlet {}

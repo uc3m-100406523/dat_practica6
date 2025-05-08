@@ -1,0 +1,1 @@
+<html><body>Registro completado. <a href='login.jsp'>Iniciar sesión</a></body></html>

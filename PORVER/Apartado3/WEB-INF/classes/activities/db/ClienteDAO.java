@@ -1,0 +1,1 @@
+package activities.db; public class ClienteDAO { public boolean checkLogin(String login, String passwd) { return true; } }

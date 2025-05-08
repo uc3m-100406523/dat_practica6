@@ -1,0 +1,86 @@
+3 . Acceso restringido a la aplicación de búsqueda de actividades deportivas
+Añadir sistemas de autenticación y redirección
+De nuevo, NO ESTÁ TESTEADO, por lo que probablemente no funcione de primeras, es más bien una guía
+
+parte2_v2_sporting_manager_data_module_reuse/
+│
+├── index.html                      
+├── login.jsp                       
+├── WEB-INF/
+   ├── web.xml                      
+   └── classes/
+       └── activities/
+           ├── controller/
+           │   ├── LoginServlet.java       
+           │   ├── LogoutServlet.java      
+           │   └── AuthFilter.java        
+           │
+           ├── db/
+           │   └── ClienteDAO.java         
+           │
+           └── model/
+               └── Cliente.java         
+
+4 . Funcionalidad del gestor
+La QUERY de cada Función (DB.java):
+
+Añadir actividad
+
+public void addact( String name, String description, String initial, float price, String pav_name, int total, int occ)throws Exception{
+		String addactivity="INSERT INTO ACTIVITIES (NAME, DESCRIPTION, START_DATE, COST, PAVILLION_NAME, TOTAL_PLACES, OCCUPIED_PLACES) VALUES ('"+name+"','"+description+"','"+initial+"','"+price+"','"+pav_name+"','"+total+"','"+occ+"')";
+		q.doUpdate(addactivity);
+	}
+
+
+Eliminar actividad
+
+public void delact(int id) throws Exception{
+		String delact="DELETE FROM ACTIVITIES WHERE ID='"+id+"'";
+		q.doUpdate(delact);
+	}
+
+
+Listar todas las actividades
+
+public ArrayList listactivities(String selection) throws Exception{
+		ArrayList data = new ArrayList();
+		ResultSet rs=q.doSelect(selection);
+		while (rs.next()) {                     
+		    int id = rs.getInt(1);
+			String name = rs.getString(2);
+			String description = rs.getString(3);
+			String initial = rs.getString(4);
+			float cost = rs.getFloat(5);
+			String pavname = rs.getString(6);
+			int total = rs.getInt(7);
+			int occupied = rs.getInt(8);
+			data.add(new Activity (id, name, description, initial, cost, pavname, total, occupied));
+		}
+		return (data);
+	}
+
+
+
+5 . Mejora de seguridad
+
+Ejemplo de uso de PreparedStatement
+
+Usar en lo relativo al control de login y contraseña
+
+String sql = "SELECT * FROM CLIENTES WHERE LOGIN = ? AND PASSWD = ?";
+PreparedStatement pstmt = conn.prepareStatement(sql);
+pstmt.setString(1, login);
+pstmt.setString(2, passwd);
+ResultSet rs = pstmt.executeQuery();
+
+Ejemplo de StringEscapeUtils 
+
+Usar en los JSP
+
+<%@ page import="org.apache.commons.text.StringEscapeUtils" %>
+<h2>Bienvenido <%= StringEscapeUtils.escapeHtml4(cliente.getName()) %></h2>
+
+
+
+
+    

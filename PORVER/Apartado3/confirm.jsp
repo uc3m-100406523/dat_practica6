@@ -1,0 +1,1 @@
+<html><body>¿Confirmar datos? <form method='post' action='guardar'><input type='submit' value='Sí'></form></body></html>

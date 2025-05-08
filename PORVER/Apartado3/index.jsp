@@ -1,0 +1,1 @@
+<html><body><h2>Bienvenido</h2><a href='login.jsp'>Usuario registrado</a> | <a href='register.jsp'>Registro</a></body></html>

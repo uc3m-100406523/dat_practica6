@@ -27,6 +27,16 @@ Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
   </servlet-mapping>
 
   <servlet>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>LoginServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/login</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
     <servlet-name>GuardarCliente</servlet-name>
     <servlet-class>GuardarCliente</servlet-class>
   </servlet>

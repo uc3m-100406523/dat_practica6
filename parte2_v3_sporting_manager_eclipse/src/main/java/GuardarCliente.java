@@ -3,9 +3,14 @@ import java.util.*;
 import java.awt.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
+
+import activities.control.AccessControl;
 import activities.db.*;
 
-//import activities.model.Cliente;
+import java.security.MessageDigest;
+import java.nio.charset.StandardCharsets;
+
+//import activities.db.Cliente;
 
 public class GuardarCliente extends HttpServlet {
 
@@ -32,10 +37,23 @@ public class GuardarCliente extends HttpServlet {
             HttpSession session = request.getSession();
             Client cliente = (Client) session.getAttribute("cliente");
             try {
-                DBInteraction db=new DBInteraction();
+                // Call for a reference for data base access
+                DBInteraction db = new DBInteraction();
+
+                // Creates an MessageDigest object for computing password hashes
+                MessageDigest md = MessageDigest.getInstance("SHA-256");
+
+                // Creates an MessageDigest object for using utilities
+                Util util = new Util();
+
+                String rawpwd = cliente.getpassword();
+                md.update(rawpwd.getBytes(StandardCharsets.UTF_8));
+                String pwd = util.bytesToHex(md.digest());
+
                 if (cliente != null) {
-                    db.addusr(cliente.getlogin(), cliente.getpassword(), cliente.getname(), cliente.getsurname(), cliente.getaddress(), cliente.getphone());
+                    db.addusr(cliente.getlogin(), pwd, cliente.getname(), cliente.getsurname(), cliente.getaddress(), cliente.getphone());
                 }
+                db.close();
             } catch (Exception e) {
                 // TODO: handle exception
             }

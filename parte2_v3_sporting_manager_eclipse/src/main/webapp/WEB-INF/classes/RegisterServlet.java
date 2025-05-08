@@ -14,7 +14,8 @@ public class RegisterServlet extends HttpServlet {
     
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        // TODO: Crear cookie
+        HttpSession session = request.getSession();
+
         // Cookie cookie = new Cookie("cliente", cliente.getlogin());
         // response.addCookie(cookie);
 
@@ -24,9 +25,7 @@ public class RegisterServlet extends HttpServlet {
         String surname = request.getParameter("cliente_surname");
         String address = request.getParameter("cliente_address");
         String phone = request.getParameter("cliente_phone");
-
         Client cliente = new Client(login, passwd, name, surname, address, phone);
-        HttpSession session = request.getSession();
 
         /* El cliente se guarda en la sesión */
         session.setAttribute("cliente", cliente);
