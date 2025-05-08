@@ -3,4 +3,7 @@ parte2_v3_sporting_manager_eclipse/.classpath
 parte2_v3_sporting_manager_eclipse/.project
 parte2_v3_sporting_manager_eclipse/.settings/
 parte2_v3_sporting_manager_eclipse/build/classes/.gitignore
-parte2_v3_sporting_manager_eclipse/build/**.class
+parte2_v3_sporting_manager_eclipse/build/*.class
+parte2_v3_sporting_manager_eclipse/build/*/*.class
+parte2_v3_sporting_manager_eclipse/build/*/*/*.class
+parte2_v3_sporting_manager_eclipse/build/*/*/*/*.class
